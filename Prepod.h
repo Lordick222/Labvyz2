@@ -9,6 +9,7 @@ private:
 
 public:
 	Prepod(std::string fio = "", std::string specialtys = "", std::string groups = "");
+	Prepod(const Prepod &prepod);
 	void setgoups();
 	void setspecialtys();
 	void setgoupss(std::string a);

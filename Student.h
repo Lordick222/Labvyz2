@@ -11,6 +11,7 @@ private:
 	double m_ball;
 public:
 	Student(std::string fio="",int grup=0, std::string spec ="", int kyrs=0, double ball=0.0);
+	Student(const Student &student);
 	virtual ~Student();
 
 	void setgrup();				//setteri

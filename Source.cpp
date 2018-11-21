@@ -14,16 +14,20 @@ int main()
 	int ichet;
 	std::string schet;
 	double dchet;
-	std::vector<Student*> student;
-	std::vector<Prepod*> prepod;
-	std::vector<Personal*> personal;
+
+	//Dinamik pamiat
+
+	//end of dinamik
 	std::ifstream in("F:\\”чеба\\3 курс 1 сем тп лаба\\Veselkov Ч копи€ Ч копи€ (2)\\myfile1.txt");
 	in >> size_s;
 	in >> size_t;
 	in >> size_p;
+	Student** student = new Student*[size_s];
+	Prepod** prepod = new Prepod*[size_s];
+	Personal** personal = new Personal*[size_s];
 	for (int i{ 0 }; i < size_s; i++)
 	{
-		student.push_back(new Student);
+		student[i] = new Student;
 		in.ignore(32767, '\n');
 		std::getline(in,schet);
 		student[i]->setfioo(schet);
@@ -39,7 +43,7 @@ int main()
 	}
 	for (int i{ 0 }; i < size_t; i++)
 	{
-		prepod.push_back(new Prepod);
+		prepod[i] = new Prepod;
 		in.ignore(32767, '\n');
 		std::getline(in, schet);
 		prepod[i]->setfioo(schet);
@@ -50,7 +54,7 @@ int main()
 	}
 	for (int i{ 0 }; i < size_p; i++)
 	{
-		personal.push_back(new Personal);
+		personal[i] = new Personal;
 		std::getline(in, schet);
 		personal[i]->setfioo(schet);
 		std::getline(in, schet);
@@ -62,13 +66,8 @@ int main()
 	}
 	in.close();
 
-
-	
-
-	
-
-
 	int i_switch, s_switch, t_switch, p_switch;
+	std::cout << "Welcome to SUAI\n";
 	while (1)
 	{
 		i_switch = f_menu();
@@ -80,26 +79,28 @@ int main()
 				s_switch = student_menu();
 				switch (s_switch)
 				{
-				case 1: student.push_back(new Student); student[size_s]->enterStudent(); size_s++;  break;
+				case 1:  
+					student = (Student**)realloc(student, (size_s) * sizeof(Student));
+					student[size_s] = new Student;
+					student[size_s]->enterStudent();
+					size_s++; 
+					break;
 
 				case 2:	
-					std::cout << "Enter number of Student:     \n";
-					std::cin >> size_s1;
-					std::cin.ignore(32767, '\n');
+					std::cout << "\tEnter number of Student(go out enter(-1):     \n";
+					mistake_(size_s-1);
 					size_s2 = (size_s - size_s1) - 1;
 					for (int i{ 0 }; i < size_s2; i++)
 					{ 
 						u = size_s1 + 1;
-						student[size_s1]->setfioo(student[u]->getfio());
-						student[size_s1]->setgrupp(student[u]->getgroup());
-						student[size_s1]->setspecialtyy(student[u]->getspecialty());
-						student[size_s1]->setcoursee(student[u]->getcourse());
-						student[size_s1]->setballl(student[u]->getball());
+						student[size_s1]= new Student(*student[u]);
 						size_s1++;
 					}
-					student.pop_back();  size_s--;
+					student = (Student**)realloc(student, (size_s-1) * sizeof(Student));
+					size_s--;
 					break;
 				case 3:	
+					pust(size_s);
 					for (int i{ 0 }; i < size_s; i++)
 					{ 
 						std::cout << "Number of student\t" << i;
@@ -108,6 +109,7 @@ int main()
 					break;
 
 				case 4: flag = true; break;
+				default: std::cout << "\n\t\t\t\tUnknown\n";
 				}
 				if (flag)
 				{
@@ -122,25 +124,29 @@ int main()
 				p_switch = prepod_menu();
 				switch (p_switch)
 				{
-				case 1:prepod.push_back(new Prepod); prepod[size_t]->enterPrepod(); size_t++; break;
+				case 1:
+					prepod = (Prepod**)realloc(prepod, (size_t) * sizeof(Prepod));
+					prepod[size_t] = new Prepod;
+					prepod[size_t]->enterPrepod();
+					size_t++;
+					break;
 
 				case 2:
-					std::cout << "Enter number of Teacher:     \n";
-					std::cin >> size_t1;
-					std::cin.ignore(32767, '\n');
+					std::cout << "\tEnter number of Teacher(go out enter(-1):     \n";
+					mistake_(size_t - 1);
 					size_t2 = (size_t - size_t1) - 1;
 					for (int i{ 0 }; i < size_t2; i++)
 					{
 						u = size_t1 + 1;
-						prepod[size_t1]->setfioo(prepod[u]->getfio());
-						prepod[size_t1]->setgoupss(prepod[u]->getgroups());
-						prepod[size_t1]->setspecialtyss(prepod[u]->getspecialtys());
+						prepod[size_t1] = new Prepod(*prepod[u]);
 						size_t1++;
 					}
-					prepod.pop_back();  size_t--;
+					prepod = (Prepod**)realloc(prepod, (size_t - 1) * sizeof(Prepod));
+					size_t--;
 					break;
 
 				case 3:
+					pust(size_t);
 					for (int i{ 0 }; i < size_t; i++)
 					{
 						std::cout << "Number of Teacher\t" << i;
@@ -149,6 +155,7 @@ int main()
 					break;
 
 				case 4: flag = true; break;
+				default: std::cout << "\n\t\t\t\tUnknown\n";
 				}
 				if (flag)
 				{
@@ -163,26 +170,28 @@ int main()
 				t_switch = personal_menu();
 				switch (t_switch)
 				{
-				case 1:personal.push_back(new Personal); personal[size_p]->enterPersonal(); size_p++; break;
-
+				case 1:
+					personal = (Personal**)realloc(personal, (size_p) * sizeof(Personal));
+					personal[size_p] = new Personal;
+					personal[size_p]->enterPersonal();
+					size_p++;
+					break;
 				case 2:
-					std::cout << "Enter number of Personal:     \n";
-					std::cin >> size_p1;
-					std::cin.ignore(32767, '\n');
+					std::cout << "\tEnter number of Personal(go out enter(-1):     \n";
+					mistake_(size_p - 1);
 					size_p2 = (size_p - size_p1) - 1;
 					for (int i{ 0 }; i < size_p2; i++)
 					{
 						u = size_p1 + 1;
-						personal[size_p1]->setfioo(personal[u]->getfio());
-						personal[size_p1]->setprofff(personal[u]->getproff());
-						personal[size_p1]->setnumberr(personal[u]->getnumber());
-						personal[size_p1]->setotvv(personal[u]->getotv());
+						personal[size_p1] = new Personal(*personal[u]);
 						size_p1++;
 					}
-					personal.pop_back(); size_p--;
+					personal = (Personal**)realloc(personal, (size_p - 1) * sizeof(Personal));
+					size_p--;
 					break;
 
 				case 3:
+					pust(size_p);
 					for (int i{ 0 }; i < size_p; i++)
 					{
 						std::cout << "Number of Personal\t" << i;
@@ -191,6 +200,7 @@ int main()
 					break;
 
 				case 4: flag = true; break;
+				default: std::cout << "\n\t\t\t\tUnknown\n";
 				}
 				if (flag)
 				{
@@ -200,6 +210,7 @@ int main()
 			}
 			break;
 		case 4: flag = true; break;
+		default: std::cout << "\n\t\t\t\tUnknown\n";
 		}
 		if (flag)
 		{

@@ -6,6 +6,17 @@ Personal::Personal(std::string fio  , std::string proff  , std::string number  ,
 	Vyz(fio),m_proff(proff),m_number(number),m_otv(otv)
 {
 }
+Personal::Personal(const Personal &personal)
+	: Vyz(personal.m_fio),
+	m_proff(personal.m_proff),
+	m_number(personal.m_number),
+	m_otv(personal.m_otv)
+{
+}
+
+
+
+
 void Personal::setproff()
 {
 	std::cout << "Enter profession: \t";

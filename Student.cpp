@@ -10,6 +10,14 @@ Student::Student(std::string fio,
 {
 }
 
+Student::Student(const Student &student)
+	: Vyz(student.m_fio),
+	m_grup(student.m_grup),
+	m_specialty(student.m_specialty),
+	m_course(student.m_course),
+	m_ball(student.m_ball)
+{
+}
 
 
 

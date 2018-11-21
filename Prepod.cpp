@@ -6,6 +6,14 @@ Prepod::Prepod(std::string fio, std::string specialtys, std::string groups):Vyz(
 {
 }
 
+Prepod::Prepod(const Prepod &prepod)
+	: Vyz(prepod.m_fio),
+	m_specialtys(prepod.m_specialtys),
+	m_groups(prepod.m_groups)
+{
+}
+
+
 void Prepod::setgoups()
 {
 	std::cout << "Enter the groups \n\tled by the teacher: \t";

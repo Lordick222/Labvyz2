@@ -7,6 +7,10 @@ Vyz::Vyz(std::string fio)
 	: m_fio(fio)
 {
 };
+Vyz::Vyz(const Vyz &vyz)
+	: m_fio(vyz.m_fio)
+{
+};
 
 void Vyz::setfio()								//vvod fio
 {	

@@ -9,6 +9,7 @@ private:
 	std::string m_otv;
 public:
 	Personal(std::string fio = "", std::string proff = "", std::string number = "", std::string otv = "");
+	Personal(const Personal &personal);
 	void setproff();
 	void setnumber();
 	void setotv();
