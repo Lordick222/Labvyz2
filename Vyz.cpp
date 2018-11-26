@@ -29,7 +29,6 @@ std::string Vyz::getfio()						//vivod fio
 	return m_fio;
 }
 
-
 Vyz::~Vyz()
 {
 }

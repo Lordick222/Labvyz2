@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 #include <iostream>
-#include <vector>
 class Vyz
 {
 protected:
@@ -9,7 +8,6 @@ protected:
 public:
 	Vyz(std::string fio="");
 	Vyz(const Vyz &vyz);
-
 	virtual ~Vyz();
 	void setfio();
 	void setfioo(std::string fio);

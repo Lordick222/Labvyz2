@@ -6,7 +6,6 @@ class Prepod :
 private:
 	std::string m_specialtys;
 	std::string m_groups;
-
 public:
 	Prepod(std::string fio = "", std::string specialtys = "", std::string groups = "");
 	Prepod(const Prepod &prepod);
@@ -19,10 +18,6 @@ public:
 	void enterPrepod();
 	void outPrepod();
 	virtual ~Prepod();
-
-	
-
-
 };
 
 

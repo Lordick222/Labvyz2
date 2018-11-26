@@ -25,9 +25,22 @@ void Student::setgrup()								//vvod
 {
 	std::cout << "Vvedite group: \t\t";
 	int grup;
-	std::cin >> grup;
-    std::cin.ignore(32767, '\n');
-	m_grup = grup;
+	while (1)
+	{
+		std::cin >> grup;
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore(32767, '\n');
+			std::cout << "\n\t\t\t\tUnknown\n\t\t\t\t";
+		}
+		else
+		{
+			std::cin.ignore(32767, '\n');
+			m_grup = grup;
+			break;
+		}
+	}
 }
 void Student::setspecialty()								//vvod
 {	
@@ -41,9 +54,22 @@ void Student::setcourse()								//vvod
 {
 	std::cout << "Vvedite course: \t";
 	int course;
-	std::cin >> course;
-	std::cin.ignore(32767, '\n');
-	m_course = course;
+	while (1)
+	{
+		std::cin >> course;
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore(32767, '\n');
+			std::cout << "\n\t\t\t\tUnknown\n\t\t\t\t";
+		}
+		else
+		{
+			std::cin.ignore(32767, '\n');
+			m_course = course;
+			break;
+		}
+	}
 }
 
 void Student::setcoursee(int a)								//vvod
@@ -68,9 +94,22 @@ void Student::setball()								//vvod
 {
 	std::cout << "Vvedite ball: \t\t";
 	double ball;
-	std::cin >> ball;
-	std::cin.ignore(32767, '\n');
-	m_ball = ball;
+	while (1)
+	{
+		std::cin >> ball;
+		if ((std::cin.fail())||(ball<0)||(ball>5))
+		{
+			std::cin.clear();
+			std::cin.ignore(32767, '\n');
+			std::cout << "\n\t\t\t\tUnknown\n\t\t\t\t";
+		}
+		else
+		{
+			std::cin.ignore(32767, '\n');
+			m_ball = ball;
+			break;
+		}
+	}
 }
 int Student::getgroup()						//vivod
 {

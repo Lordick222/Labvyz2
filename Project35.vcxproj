@@ -115,16 +115,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Header.h" />
+    <ClInclude Include="Keeper.h" />
     <ClInclude Include="Personal.h" />
     <ClInclude Include="Prepod.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Vyz.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Keeper.cpp" />
     <ClCompile Include="Personal.cpp" />
     <ClCompile Include="Prepod.cpp" />
-    <ClCompile Include="Source.cpp" />
     <ClCompile Include="Source1.cpp" />
     <ClCompile Include="Student.cpp" />
     <ClCompile Include="Vyz.cpp" />
